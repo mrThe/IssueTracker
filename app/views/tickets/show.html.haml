@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Sub:
+  = @ticket.sub_id
+%p
+  %b Customer name:
+  = @ticket.customer_name
+%p
+  %b Customer email:
+  = @ticket.customer_email
+%p
+  %b Subject:
+  = @ticket.subject
+%p
+  %b Message:
+  = @ticket.message
+
+- if current_user && current_user.can_edit?
+  = link_to 'Edit', edit_ticket_path(@ticket)
+  \|
+= link_to 'Back', tickets_path

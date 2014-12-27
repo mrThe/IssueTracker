@@ -1,0 +1,31 @@
+%h1 Listing tickets
+
+%table
+  %thead
+    %tr
+      %th Sub
+      %th Customer name
+      %th Customer email
+      %th Subject
+      %th Message
+      %th
+      - if current_user && current_user.can_edit?
+        %th
+        %th
+      
+  %tbody
+    - @tickets.each do |ticket|
+      %tr
+        %td= ticket.sub_id
+        %td= ticket.customer_name
+        %td= ticket.customer_email
+        %td= ticket.subject
+        %td= ticket.message
+        %td= link_to 'Show', ticket
+        - if current_user && current_user.can_edit?
+          %td= link_to 'Edit', edit_ticket_path(ticket)
+          %td= link_to 'Destroy', ticket, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ticket', new_ticket_path
