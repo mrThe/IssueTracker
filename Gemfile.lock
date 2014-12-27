@@ -91,7 +91,6 @@ GEM
       hpricot (~> 0.8.6)
       ruby_parser (~> 3.1.1)
     i18n (0.7.0)
-    interception (0.5)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -118,9 +117,6 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    pry-rescue (1.4.1)
-      interception (>= 0.5)
-      pry
     puma (2.10.2)
       rack (>= 1.1, < 2.0)
     quiet_assets (1.1.0)
@@ -229,7 +225,6 @@ DEPENDENCIES
   launchy
   pg
   pry-rails
-  pry-rescue
   puma
   quiet_assets
   rails (= 4.1.7)

@@ -6,14 +6,6 @@ class User < ActiveRecord::Base
 
   after_initialize :set_default_role, :if => :new_record?
 
-  def staff?
-    role == :staff
-  end
-
-  def admin?
-    role == :admin
-  end
-
   def can_edit?
     staff? or admin?
   end

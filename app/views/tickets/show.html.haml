@@ -17,6 +17,5 @@
   = @ticket.message
 
 - if current_user && current_user.can_edit?
-  = link_to 'Edit', edit_ticket_path(@ticket)
   \|
 = link_to 'Back', tickets_path

@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update]
-  before_filter :authenticate_user!, only: [:index, :edit, :update]
+  before_action :set_ticket, only: [:show, :update]
+  before_filter :authenticate_user!, only: [:index, :update]
 
   respond_to :html
 
@@ -13,9 +13,6 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-  end
-
-  def edit
   end
 
   def create
