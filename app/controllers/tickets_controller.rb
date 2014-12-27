@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update]
-  before_filter :authenticate_user!, only: [:edit, :update]
+  before_filter :authenticate_user!, only: [:index, :edit, :update]
 
   respond_to :html
 
