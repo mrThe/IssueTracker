@@ -1,31 +1,33 @@
 %p#notice= notice
 
-%p
-  %b Sub:
-  = @ticket.sub_id
-%p
-  %b Status:
-  = @ticket.status.name
-%p
-  %b Customer name:
-  = @ticket.customer_name
-%p
-  %b Customer email:
-  = @ticket.customer_email
-%p
-  %b Subject:
-  = @ticket.subject
-%p
-  %b Message:
-  = @ticket.message
-%p
-  %b Owner:
-  = @ticket.owner_name
+
+%dl.dl-horizontal
+  %dt Sub:
+  %dd= @ticket.sub_id
+
+  %dt Status:
+  %dd= @ticket.status.name
+
+  %dt Customer name:
+  %dd= @ticket.customer_name
+
+  %dt Customer email:
+  %dd= @ticket.customer_email
+
+  %dt Subject:
+  %dd= @ticket.subject
+
+  %dt Message:
+  %dd= @ticket.message
+
+  %dt Owner:
+  %dd= @ticket.owner_name
+
 
 = render 'ticket_histories/index'
 
-- if current_user && current_user.can_edit?
+- if user_signed_in? && current_user.can_edit?
   = render 'ticket_histories/form'
+  = link_to 'Back', tickets_path, class: "btn btn-primary"
 - else
   = render 'ticket_histories/user_form'
-= link_to 'Back', tickets_path

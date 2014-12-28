@@ -4,19 +4,23 @@ class TicketHistoriesController < ApplicationController
   respond_to :html
 
   def create
-    if current_user && current_user.can_edit?
+    if user_signed_in? && current_user.can_edit?
       @ticket_history = @ticket.ticket_histories.new(ticket_params)
       @ticket_history.user = current_user
 
       if @ticket_history.save
         TicketMailer.notify(@ticket_history).deliver
+      else
+        flash[:error] = @ticket_history.errors.full_messages.join(', ')
       end
     else
       @ticket_history = @ticket.ticket_histories.new(user_ticket_params)
       @ticket_history.user = User.customer_user
       @ticket_history.status = Status.initial_status
 
-      @ticket_history.save
+      unless @ticket_history.save
+        flash[:error] = @ticket_history.errors.full_messages.join(', ')
+      end
     end
 
     redirect_to @ticket

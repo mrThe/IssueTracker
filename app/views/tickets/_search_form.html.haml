@@ -1,4 +1,5 @@
-= form_tag tickets_path(status: params[:status]), method: :get do
-  = hidden_field_tag 'status', params[:status]
-  = text_field_tag :search, params[:search], placeholder: "Search"
-  = submit_tag 'Search'
+= form_tag tickets_path(status: params[:status]), class: "navbar-form navbar-left", role: :search, method: :get do
+  .form-group
+    = hidden_field_tag 'status', params[:status]
+    = text_field_tag :search, params[:search], placeholder: "Search", class: "form-control"
+    = submit_tag 'Search', class: "btn btn-default"

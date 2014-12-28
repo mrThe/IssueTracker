@@ -6,17 +6,17 @@
         - @ticket.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form-group
     = f.label :customer_name
-    = f.text_field :customer_name
-  .field
+    = f.text_field :customer_name, class: 'form-control'
+  .form-group
     = f.label :customer_email
-    = f.text_field :customer_email
-  .field
+    = f.text_field :customer_email, class: 'form-control'
+  .form-group
     = f.label :subject
-    = f.text_field :subject
-  .field
+    = f.text_field :subject, class: 'form-control'
+  .form-group
     = f.label :message
-    = f.text_area :message
-  .actions
-    = f.submit 'Save'
+    = f.text_area :message, class: 'form-control'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'

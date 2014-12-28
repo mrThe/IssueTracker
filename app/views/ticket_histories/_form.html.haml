@@ -6,14 +6,16 @@
         - @ticket_history.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :message
-    = f.text_area :message
-  .field
+  .form-group
     = f.label :status
-    = f.collection_select :status_id, Status.all, :id, :name, prompt: true
-  .field
-    = f.label :take_ownership
-    = f.check_box :take_ownership
-  .actions
-    = f.submit 'Save'
+    = f.collection_select :status_id, Status.all, :id, :name, { prompt: true }, class: 'form-control'
+  .form-group
+    .checkbox
+      %label
+        = f.check_box :take_ownership
+        \ Take Ownership
+  .form-group
+    = f.label :message
+    = f.text_area :message, class: 'form-control'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'

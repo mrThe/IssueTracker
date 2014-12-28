@@ -2,4 +2,6 @@
 
 = render 'form'
 
-= link_to 'Back', tickets_path
+- if user_signed_in?
+  %br
+  = link_to 'Back', tickets_path, class: "btn btn-primary"

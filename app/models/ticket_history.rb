@@ -4,7 +4,7 @@ class TicketHistory < ActiveRecord::Base
   belongs_to :owner, class_name: User
   belongs_to :status
 
-  validates :user, :status,
+  validates :user, :status, :message,
     presence: true
 
   before_validation :set_last_status, :if => proc { self.status.nil? }

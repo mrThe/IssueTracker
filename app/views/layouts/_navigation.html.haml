@@ -11,3 +11,10 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
+      - if user_signed_in?
+        = render 'tickets/search_form'
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
+        - else
+          %li= link_to 'Sign in', new_user_session_path

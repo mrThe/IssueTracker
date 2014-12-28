@@ -23,3 +23,10 @@ en:
   ticket_mailer:
     confim:
       subject: "Ticket received!"
+    notify:
+      subject: "Ticket updated!"
+  helpers:
+    label:
+      ticket:
+        customer_name: "Your name"
+        customer_email: "Your email"

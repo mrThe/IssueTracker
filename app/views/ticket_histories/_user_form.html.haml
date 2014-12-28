@@ -6,8 +6,8 @@
         - @ticket_history.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form-group
     = f.label :message
-    = f.text_area :message
-  .actions
-    = f.submit 'Save'
+    = f.text_area :message, class: 'form-control'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'
