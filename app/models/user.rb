@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable,
          :trackable, :validatable
 
-  enum role: [:staff, :admin]
+  enum role: [:staff, :admin, :customer]
 
   after_initialize :set_default_role, :if => :new_record?
 
@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 
   def can_edit?
     staff? or admin?
+  end
+
+  def self.customer_user
+    User.customer.first
   end
 
   private

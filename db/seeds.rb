@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create(name: "Customer", role: :customer).save!(validate: false)
+
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
