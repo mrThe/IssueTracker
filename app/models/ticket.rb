@@ -19,8 +19,7 @@ class Ticket < ActiveRecord::Base
   scope :on_hold,    -> { where(status: Status.on_hold) }
   scope :completed,  -> { where(status: Status.all_completed) }
 
-
-  pg_search_scope :fulltext_search, :against => [:sub_id, :subject, :message]
+  pg_search_scope :fulltext_search, against: [:sub_id, :subject, :message]
 
   def self.search(query)
     if query.present?

@@ -8,12 +8,10 @@
 
   .form-group
     = f.label :status
-    = f.collection_select :status_id, Status.all, :id, :name, { prompt: true }, class: 'form-control'
+    = f.select :status_id, Status.all.map{|s| [s.name, s.id]}, { selected: @ticket.status_id }, { class: 'form-control'}
   .form-group
-    .checkbox
-      %label
-        = f.check_box :take_ownership
-        \ Take Ownership
+    = f.label :owner
+    = f.select :owner_id, User.staff.map{|u| [u.name, u.id]}, { selected: @ticket.owner_id, include_blank: "None" }, { class: 'form-control' }
   .form-group
     = f.label :message
     = f.text_area :message, class: 'form-control'

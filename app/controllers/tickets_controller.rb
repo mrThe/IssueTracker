@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
   respond_to :html
 
   def index
-    @tickets = Ticket.send(determine_scope).search(params[:search]).order(:created_at)
+    @tickets = Ticket.send(determine_search_scope).search(params[:search]).order(:created_at)
   end
 
   def show
@@ -32,7 +32,7 @@ class TicketsController < ApplicationController
 
   private
 
-  def determine_scope
+  def determine_search_scope
     scope = params[:status].try(:to_sym) || :all
     [:unassigned, :open, :on_hold, :completed, :all].include?(scope) ? scope : :all
   end
