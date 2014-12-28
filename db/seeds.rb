@@ -7,3 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+statuses = [
+  { name: "Waiting for Staff Response", flag: :initial },
+  { name: "Waiting for Customer",       flag: :waiting },
+  { name: "On Hold",                    flag: :hold },
+  { name: "Cancelled",                  flag: :cancelled },
+  { name: "Completed",                  flag: :completed }
+]
+
+Status.create statuses

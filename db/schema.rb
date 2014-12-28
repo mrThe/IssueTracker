@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227160241) do
+ActiveRecord::Schema.define(version: 20141228171108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "statuses", force: true do |t|
+    t.string   "name"
+    t.integer  "flag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ticket_histories", force: true do |t|
+    t.integer  "ticket_id"
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ticket_histories", ["status_id"], name: "index_ticket_histories_on_status_id", using: :btree
+  add_index "ticket_histories", ["ticket_id"], name: "index_ticket_histories_on_ticket_id", using: :btree
+  add_index "ticket_histories", ["user_id"], name: "index_ticket_histories_on_user_id", using: :btree
 
   create_table "tickets", force: true do |t|
     t.string   "sub_id",         null: false

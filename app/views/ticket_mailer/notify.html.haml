@@ -1,0 +1,18 @@
+%b>= @ticket.customer_name
+\ , your ticket
+= link_to(@ticket.subject, ticket_url(@ticket))
+\ Updated by
+%b>= "#{@ticket_history.user.name} (#{@ticket_history.user.email})"
+
+%br
+%br
+Status:
+%br
+= @ticket.status.name
+
+%br
+%br
+
+Message:
+%br
+= @ticket_history.message

@@ -9,6 +9,7 @@ class TicketsController < ApplicationController
   end
 
   def show
+    @ticket_history = TicketHistory.new
   end
 
   def new
@@ -32,7 +33,7 @@ class TicketsController < ApplicationController
   private
 
   def set_ticket
-    @ticket = Ticket.find_by! sub_id: params[:sub_id]
+    @ticket = Ticket.includes(:ticket_histories).find_by! sub_id: params[:sub_id]
   end
 
   def ticket_params

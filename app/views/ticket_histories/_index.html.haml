@@ -1,0 +1,16 @@
+%h3 History
+
+%table
+  %thead
+    %tr
+      %th Message
+      %th Status
+      %th User
+
+  %tbody
+    - @ticket.ticket_histories.each do |ticket_history|
+      %tr
+        %td= ticket_history.message
+        %td= ticket_history.status.name
+        %td= ticket_history.user.email
+

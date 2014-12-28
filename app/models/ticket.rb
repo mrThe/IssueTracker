@@ -8,8 +8,14 @@ class Ticket < ActiveRecord::Base
 
   after_initialize :set_sub_id, :if => :new_record?
 
+  has_many :ticket_histories
+
   def to_param
     "#{sub_id}"
+  end
+
+  def status
+    ticket_histories.last.status || Status.initial.first
   end
 
   private

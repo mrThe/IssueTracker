@@ -6,4 +6,11 @@ class TicketMailer < ActionMailer::Base
 
     mail to: ticket.customer_email
   end
+
+  def notify(ticket_history)
+    @ticket_history = ticket_history
+    @ticket = ticket_history.ticket
+
+    mail to: @ticket.customer_email
+  end
 end

@@ -1,0 +1,12 @@
+<%= @ticket.customer_name %>, your ticket "<%= @ticket.subject %>" Updated by <%= "#{@ticket_history.user.name} (#{@ticket_history.user.email})" %>
+
+---
+
+Status:
+<%= @ticket.status.name %>
+
+Message:
+<%= @ticket_history.message %>
+
+Url: <%= ticket_url(@ticket) %>
+

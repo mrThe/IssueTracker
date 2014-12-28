@@ -7,6 +7,13 @@ RSpec.describe Ticket, type: :model do
   it { should validate_presence_of :subject }
   it { should validate_presence_of :message }
 
+  describe "#to_param" do
+    let(:ticket) { FactoryGirl.create :ticket }
+    subject { ticket.to_param }
+
+    it { should eql ticket.sub_id.to_s }
+  end
+
   describe "sub_id" do
     it "should be unique" do
       FactoryGirl.create(:ticket)
