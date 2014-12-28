@@ -21,7 +21,7 @@
 
 en:
   ticket_mailer:
-    confim:
+    confirm:
       subject: "Ticket received!"
     notify:
       subject: "Ticket updated!"

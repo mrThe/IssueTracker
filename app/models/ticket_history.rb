@@ -4,7 +4,7 @@ class TicketHistory < ActiveRecord::Base
   belongs_to :owner, class_name: User
   belongs_to :status
 
-  validates :user, :status, :message,
+  validates :ticket, :user, :status, :message,
     presence: true
 
   before_validation :set_last_status, :if => proc { self.status.nil? }
@@ -12,7 +12,7 @@ class TicketHistory < ActiveRecord::Base
   after_save        :set_owner_for_ticket
 
   def owner_name
-    owner.name rescue 'None'
+    owner.try(:name) || 'None'
   end
 
   private

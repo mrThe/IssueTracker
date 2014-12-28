@@ -1,13 +1,39 @@
-describe User do
+require 'rails_helper'
 
-  before(:each) { @user = User.new(email: 'user@example.com') }
+RSpec.describe User, type: :model do
 
-  subject { @user }
+  describe ".customer_user" do
+    let(:user) { FactoryGirl.create :user, role: :customer }
 
-  it { should respond_to(:email) }
+    subject { User.customer_user }
 
-  it "#email returns a string" do
-    expect(@user.email).to match 'user@example.com'
+    it { should eql user }
+  end
+
+  describe "#can_edit?" do
+    context "admin" do
+      let(:user) { FactoryGirl.create :user, role: :admin }
+
+      subject { user.can_edit? }
+
+      it { should be true }
+    end
+
+    context "staff" do
+      let(:user) { FactoryGirl.create :user, role: :staff }
+
+      subject { user.can_edit? }
+
+      it { should be true }
+    end
+
+    context "customer" do
+      let(:user) { FactoryGirl.create :user, role: :customer }
+
+      subject { user.can_edit? }
+
+      it { should be false }
+    end
   end
 
 end

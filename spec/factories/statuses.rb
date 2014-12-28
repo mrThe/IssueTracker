@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :status do
-    name "MyString"
-flag 1
+    name Faker::Lorem.word
+    flag :completed
   end
-
 end
