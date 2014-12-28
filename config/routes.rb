@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+
   authenticated :user do
     root to: 'tickets#index', as: :authenticated_root
+    resources :users, only: [:new, :create]
   end
 
   unauthenticated do
