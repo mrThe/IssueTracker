@@ -7,10 +7,10 @@
           %li= msg
 
   .form-group
-    = f.label :status
+    = f.label :status_id
     = f.select :status_id, Status.all.map{|s| [s.name, s.id]}, { selected: @ticket.status_id }, { class: 'form-control'}
   .form-group
-    = f.label :owner
+    = f.label :owner_id
     = f.select :owner_id, User.staff.map{|u| [u.name, u.id]}, { selected: @ticket.owner_id, include_blank: "None" }, { class: 'form-control' }
   .form-group
     = f.label :message
