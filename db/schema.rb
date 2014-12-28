@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228171108) do
+ActiveRecord::Schema.define(version: 20141228184920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,10 @@ ActiveRecord::Schema.define(version: 20141228171108) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
   end
 
+  add_index "ticket_histories", ["owner_id"], name: "index_ticket_histories_on_owner_id", using: :btree
   add_index "ticket_histories", ["status_id"], name: "index_ticket_histories_on_status_id", using: :btree
   add_index "ticket_histories", ["ticket_id"], name: "index_ticket_histories_on_ticket_id", using: :btree
   add_index "ticket_histories", ["user_id"], name: "index_ticket_histories_on_user_id", using: :btree
@@ -44,8 +46,12 @@ ActiveRecord::Schema.define(version: 20141228171108) do
     t.text     "message",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
+    t.integer  "status_id"
   end
 
+  add_index "tickets", ["owner_id"], name: "index_tickets_on_owner_id", using: :btree
+  add_index "tickets", ["status_id"], name: "index_tickets_on_status_id", using: :btree
   add_index "tickets", ["sub_id"], name: "index_tickets_on_sub_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|

@@ -1,26 +1,36 @@
 %h1 Listing tickets
 
+= link_to "All tickets", tickets_path
+= link_to "New unassigned tickets", tickets_path(status: :unassigned)
+= link_to "Open Tickets", tickets_path(status: :open)
+= link_to "On hold tickets", tickets_path(status: :on_hold)
+= link_to "Closed Tickets", tickets_path(status: :completed)
+
+= render 'search_form'
+
 %table
   %thead
     %tr
       %th Sub
+      %th Status
       %th Customer name
       %th Customer email
       %th Subject
-      %th Message
+      %th Owner
       %th
       - if current_user && current_user.can_edit?
         %th
         %th
-      
+
   %tbody
     - @tickets.each do |ticket|
       %tr
         %td= ticket.sub_id
+        %td= ticket.status.name
         %td= ticket.customer_name
         %td= ticket.customer_email
         %td= ticket.subject
-        %td= ticket.message
+        %td= ticket.owner_name
         %td= link_to 'Show', ticket
 
 %br

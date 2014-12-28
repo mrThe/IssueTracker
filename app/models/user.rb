@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
 
   has_many :ticket_histories
+  has_many :tickets, foreign_key: :owner_id
 
   def can_edit?
     staff? or admin?

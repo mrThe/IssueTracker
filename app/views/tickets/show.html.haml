@@ -4,6 +4,9 @@
   %b Sub:
   = @ticket.sub_id
 %p
+  %b Status:
+  = @ticket.status.name
+%p
   %b Customer name:
   = @ticket.customer_name
 %p
@@ -15,6 +18,9 @@
 %p
   %b Message:
   = @ticket.message
+%p
+  %b Owner:
+  = @ticket.owner_name
 
 = render 'ticket_histories/index'
 

@@ -13,6 +13,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'haml-rails'
 gem 'pg'
+gem 'pg_search'
 
 group :development do
   gem 'spring'

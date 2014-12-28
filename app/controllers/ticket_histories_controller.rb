@@ -22,6 +22,6 @@ class TicketHistoriesController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket_history).permit(:message, :status_id)
+    params.require(:ticket_history).permit(:message, :status_id, :take_ownership)
   end
 end

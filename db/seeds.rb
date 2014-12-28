@@ -11,7 +11,7 @@ puts 'CREATED ADMIN USER: ' << user.email
 statuses = [
   { name: "Waiting for Staff Response", flag: :initial },
   { name: "Waiting for Customer",       flag: :waiting },
-  { name: "On Hold",                    flag: :hold },
+  { name: "On Hold",                    flag: :on_hold },
   { name: "Cancelled",                  flag: :cancelled },
   { name: "Completed",                  flag: :completed }
 ]

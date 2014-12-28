@@ -12,5 +12,8 @@
   .field
     = f.label :status
     = f.collection_select :status_id, Status.all, :id, :name, prompt: true
+  .field
+    = f.label :take_ownership
+    = f.check_box :take_ownership
   .actions
     = f.submit 'Save'
